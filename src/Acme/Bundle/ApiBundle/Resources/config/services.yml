@@ -1,0 +1,9 @@
+parameters:
+#    acme_api.example.class: Acme\Bundle\ApiBundle\Example
+
+services:
+
+    acme_api.event.jwt_response_listener:
+        class: Acme\Bundle\ApiBundle\EventListener\JWTResponseListener
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }

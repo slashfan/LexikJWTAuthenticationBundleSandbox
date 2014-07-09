@@ -1,0 +1,14 @@
+Acme\Bundle\ApiBundle\Model\Page:
+    exclusion_policy: ALL
+    xml_root_name:    page
+    access_order:     alphabetical
+    properties:
+        title:
+            expose: true
+            groups: [ default, list ]
+        content:
+            expose: true
+            groups: [ default ]
+        publishedAt:
+            expose: true
+            groups: [ default, list ]

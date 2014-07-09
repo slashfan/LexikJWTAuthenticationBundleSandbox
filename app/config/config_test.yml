@@ -1,0 +1,29 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+swiftmailer:
+    disable_delivery: true
+
+liip_functional_test:
+    cache_sqlite_db: true
+
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_sqlite
+                path:     %kernel.cache_dir%/test.db
+
+# Lexik JWT Authentication
+lexik_jwt_authentication:
+    private_key_path:   %kernel.root_dir%/../src/Acme/Bundle/ApiBundle/Tests/Fixtures/JWT/private.pem
+    public_key_path:    %kernel.root_dir%/../src/Acme/Bundle/ApiBundle/Tests/Fixtures/JWT/public.pem
+    pass_phrase:        testing

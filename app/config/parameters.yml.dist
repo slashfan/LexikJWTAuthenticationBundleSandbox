@@ -1,0 +1,22 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    dev.delivery_address: email@dev.tld
+
+    private_key_path:   %kernel.root_dir%/var/jwt/private.pem
+    public_key_path:    %kernel.root_dir%/var/jwt/public.pem
+    pass_phrase:        ThisTokenIsNotSoSecretChangeItPlease
+    token_ttl:          86400
