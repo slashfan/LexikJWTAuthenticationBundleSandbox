@@ -17,7 +17,8 @@ framework:
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session:
+        save_path: %kernel.root_dir%/var/sessions
     fragments:       ~
     http_method_override: true
 
