@@ -51,7 +51,7 @@ class AuthenticationControllerTest extends WebTestCase
     {
         $data = array(
             'username' => 'user',
-            'password' => 'userpass',
+            'password' => 'password',
         );
 
         $this->client->request(

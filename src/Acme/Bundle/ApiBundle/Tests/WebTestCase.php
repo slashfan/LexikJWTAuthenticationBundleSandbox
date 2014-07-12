@@ -4,7 +4,9 @@ namespace Acme\Bundle\ApiBundle\Tests;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase as LiipWebTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\User;
 
 /**
  * WebTestCase
@@ -14,6 +16,11 @@ use Symfony\Component\HttpFoundation\Response;
  */
 abstract class WebTestCase extends LiipWebTestCase
 {
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
+
     protected $authorizationHeaderPrefix = 'Bearer';
     protected $queryParameterName = 'bearer';
 
@@ -21,18 +28,27 @@ abstract class WebTestCase extends LiipWebTestCase
      * Create a client with a default Authorization header.
      *
      * @param string $username
+     * @param string $password
      *
      * @return \Symfony\Bundle\FrameworkBundle\Client
      */
-    protected function createAuthenticatedClient($username = 'user')
+    protected function createAuthenticatedClient($username = 'user', $password = 'password')
     {
         $client = static::createClient();
+        $client->request(
+            'POST',
+            $this->getUrl('login_check'),
+            array(
+                'username' => $username,
+                'password' => $password,
+            )
+        );
 
-        $jwt = $client->getContainer()->get('lexik_jwt_authentication.jwt_encoder')->encode(array(
-            'username' => $username,
-        ));
+        $response = $client->getResponse();
+        $data     = json_decode($response->getContent(), true);
 
-        $client->setServerParameter('HTTP_Authorization', sprintf('%s %s', $this->authorizationHeaderPrefix, $jwt->getTokenString()));
+        $client = static::createClient();
+        $client->setServerParameter('HTTP_Authorization', sprintf('%s %s', $this->authorizationHeaderPrefix, $data['token']));
 
         return $client;
     }

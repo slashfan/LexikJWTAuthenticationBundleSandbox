@@ -1,8 +1,18 @@
 parameters:
     acme_api.event.jwt_response_listener.class: Acme\Bundle\ApiBundle\EventListener\JWTResponseListener
+    acme_api.event.jwt_created_listener.class: Acme\Bundle\ApiBundle\EventListener\JWTCreatedListener
+    acme_api.event.jwt_decoded_listener.class: Acme\Bundle\ApiBundle\EventListener\JWTDecodedListener
 
 services:
     acme_api.event.jwt_response_listener:
         class: %acme_api.event.jwt_response_listener.class%
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+    acme_api.event.jwt_created_listener:
+        class: %acme_api.event.jwt_created_listener.class%
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+    acme_api.event.jwt_decoded_listener:
+        class: %acme_api.event.jwt_decoded_listener.class%
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_decoded, method: onJWTDecoded }

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52a8984882a4463d29aec7305c63d526",
+    "hash": "4a5442eeeb9a550a2680fcc48f3df4e0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1039,17 +1039,17 @@
         },
         {
             "name": "lexik/jwt-authentication-bundle",
-            "version": "v1.0.1",
+            "version": "dev-master",
             "target-dir": "Lexik/Bundle/JWTAuthenticationBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lexik/LexikJWTAuthenticationBundle.git",
-                "reference": "b4f67039bb99fce55a6b9e9df199a7cb7df0a285"
+                "reference": "176bb9ad09f3d8b0f5cfc0055923558eaeb9d70f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/b4f67039bb99fce55a6b9e9df199a7cb7df0a285",
-                "reference": "b4f67039bb99fce55a6b9e9df199a7cb7df0a285",
+                "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/176bb9ad09f3d8b0f5cfc0055923558eaeb9d70f",
+                "reference": "176bb9ad09f3d8b0f5cfc0055923558eaeb9d70f",
                 "shasum": ""
             },
             "require": {
@@ -1091,7 +1091,7 @@
                     "email": "n.cabot@lexik.fr"
                 }
             ],
-            "description": "This bundles provides JWT authentication for your Symfony2 REST API",
+            "description": "This bundle provides JWT authentication for your Symfony2 REST API",
             "homepage": "https://github.com/lexik/LexikJWTAuthenticationBundle",
             "keywords": [
                 "Authentication",
@@ -1102,7 +1102,7 @@
                 "jwt",
                 "rest"
             ],
-            "time": "2014-07-08 12:02:17"
+            "time": "2014-07-11 12:56:03"
         },
         {
             "name": "monolog/monolog",
@@ -2733,9 +2733,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "lexik/jwt-authentication-bundle": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },
