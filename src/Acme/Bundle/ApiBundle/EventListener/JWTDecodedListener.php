@@ -25,10 +25,6 @@ class JWTDecodedListener
         $payload = $event->getPayload();
         $request = $event->getRequest();
 
-//        var_dump($payload);
-//        var_dump($request->getClientIp());
-//        exit;
-
         if (!isset($payload['ip']) || $payload['ip'] !== $request->getClientIp()) {
             $event->markAsInvalid();
         }
