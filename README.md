@@ -20,7 +20,12 @@ A minimalist sandbox to quickly test JWT authentication through LexikJWTAuthenti
 
     bin/phpunit -c app
 
-## AngularjS Demo
+## AngularJS App Demo
 
-A demo application based on [this post](http://www.kdmooreconsulting.com/blogs/authentication-with-ionic-and-angular-js-in-a-cordovaphonegap-mobile-web-application/) is available in the web/angular-demo directory.
-To run it, install the assets using `bower install` and browse to the index.html (for the example to work, both the api and the client app must be in the same domain).
+A demo application is available in the web/angular-demo directory. It is based on the great post [Authentication with Ionic and Angular.js in a Cordova/Phonegap mobile web application](http://www.kdmooreconsulting.com/blogs/authentication-with-ionic-and-angular-js-in-a-cordovaphonegap-mobile-web-application/).
+
+To run the demo app : 
+
+* install the assets using `bower install`
+* run the symfony application with a `app/console server:run`
+* browse to `http://localhost:8000/angular-demo/index.html`
