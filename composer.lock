@@ -1044,12 +1044,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lexik/LexikJWTAuthenticationBundle.git",
-                "reference": "a066b42946bde675f986c8b4f9b5cb536ad36a7a"
+                "reference": "ef25ae47fae7a179e8a7c6c7d694a68f815cd9e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/a066b42946bde675f986c8b4f9b5cb536ad36a7a",
-                "reference": "a066b42946bde675f986c8b4f9b5cb536ad36a7a",
+                "url": "https://api.github.com/repos/lexik/LexikJWTAuthenticationBundle/zipball/ef25ae47fae7a179e8a7c6c7d694a68f815cd9e4",
+                "reference": "ef25ae47fae7a179e8a7c6c7d694a68f815cd9e4",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1105,7 @@
                 "jwt",
                 "rest"
             ],
-            "time": "2014-07-15 08:26:51"
+            "time": "2014-07-22 18:50:01"
         },
         {
             "name": "monolog/monolog",
