@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Bundle\ApiBundle\Controller\REST;
+namespace Acme\Bundle\ApiBundle\Controller\Rest;
 
 use Acme\Bundle\ApiBundle\Model\Page;
 use FOS\RestBundle\Controller\Annotations as FOSRest;
