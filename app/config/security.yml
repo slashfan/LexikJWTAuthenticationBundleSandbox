@@ -14,7 +14,7 @@ security:
 
     firewalls:
         dev:
-            pattern:  ^/api/(_(profiler|wdt|doc))/
+            pattern:  ^/(_(profiler|wdt|doc))/
             security: false
 
         login:
