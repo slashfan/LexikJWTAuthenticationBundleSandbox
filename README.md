@@ -3,18 +3,13 @@
 [![Build Status](https://travis-ci.org/slashfan/LexikJWTAuthenticationBundleSandbox.svg)](https://travis-ci.org/slashfan/LexikJWTAuthenticationBundleSandbox)
 
 A minimalist sandbox to quickly test JWT authentication through LexikJWTAuthenticationBundle and Symfony2.3.
-** Demonstration purpose only. **
+** Demonstration purpose only. Do not use directly in production. **
 
 ## Installation
 
 ### Dependencies
 
-    composer install
-
-### SSL keys
-
-    openssl genrsa -out app/var/jwt/private.pem -aes256 4096
-    openssl rsa -pubout -in app/var/jwt/private.pem -out app/var/jwt/public.pem
+    composer install -o
 
 ## Running Tests
 
@@ -26,6 +21,6 @@ A demo application is available in the web/angular-demo directory. It is based o
 
 To run the demo app : 
 
-* install the assets using `bower install`
+* install the assets using `bower install` in the web/angular-demo directory
 * run the symfony application with a `app/console server:run`
 * browse to `http://localhost:8000/angular-demo/index.html`

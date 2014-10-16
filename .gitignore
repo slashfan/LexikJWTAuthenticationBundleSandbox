@@ -4,11 +4,9 @@
 /app/config/parameters.yml
 /app/logs/*
 /app/var/sessions/*
-/app/var/jwt/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 !app/var/sessions/.gitkeep
-!app/var/jwt/.gitkeep
 /build/
 /vendor/
 /bin/
