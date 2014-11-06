@@ -1,16 +1,29 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        Acme\Bundle\ApiBundle\Entity\User: sha512
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
 
+#    providers:
+#        in_memory:
+#            memory:
+#                users:
+#                    user:  { password: password, roles: [ 'ROLE_USER' ] }
+#                    admin: { password: password, roles: [ 'ROLE_ADMIN' ] }
+
     providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, user_db]
         in_memory:
             memory:
                 users:
                     user:  { password: password, roles: [ 'ROLE_USER' ] }
                     admin: { password: password, roles: [ 'ROLE_ADMIN' ] }
+        user_db:
+            entity: { class: Acme\Bundle\ApiBundle\Entity\User, property: email }
 
     firewalls:
         dev:
@@ -28,6 +41,7 @@ security:
                 password_parameter: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                provider: chain_provider
 
         api:
             pattern:   ^/api
