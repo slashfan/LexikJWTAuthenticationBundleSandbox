@@ -35,12 +35,7 @@ class AuthenticationControllerTest extends WebTestCase
             'password' => 'userwrongpass',
         );
 
-        $this->client->request(
-            'POST',
-            $this->getUrl('login_check'),
-            $data
-        );
-
+        $this->client->request('POST', $this->getUrl('login_check'), $data);
         $this->assertJsonResponse($this->client->getResponse(), 401);
     }
 
@@ -54,13 +49,9 @@ class AuthenticationControllerTest extends WebTestCase
             'password' => 'password',
         );
 
-        $this->client->request(
-            'POST',
-            $this->getUrl('login_check'),
-            $data
-        );
-
+        $this->client->request('POST', $this->getUrl('login_check'), $data);
         $this->assertJsonResponse($this->client->getResponse(), 200);
+
         $response = json_decode($this->client->getResponse()->getContent(), true);
         $this->assertArrayHasKey('token', $response);
         $this->assertArrayHasKey('data', $response);

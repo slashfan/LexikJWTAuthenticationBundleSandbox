@@ -3,10 +3,8 @@
 namespace Acme\Bundle\ApiBundle\Tests;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase as LiipWebTestCase;
-use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\User\User;
 
 /**
  * WebTestCase
@@ -21,7 +19,14 @@ abstract class WebTestCase extends LiipWebTestCase
      */
     protected $container;
 
+    /**
+     * @var string
+     */
     protected $authorizationHeaderPrefix = 'Bearer';
+
+    /**
+     * @var string
+     */
     protected $queryParameterName = 'bearer';
 
     /**
@@ -47,31 +52,9 @@ abstract class WebTestCase extends LiipWebTestCase
         $response = $client->getResponse();
         $data     = json_decode($response->getContent(), true);
 
-        $client = static::createClient();
-        $client->setServerParameter('HTTP_Authorization', sprintf('%s %s', $this->authorizationHeaderPrefix, $data['token']));
-
-        return $client;
-    }
-
-    /**
-     * Shortcut method to execute a JSON request.
-     *
-     * @param Client $client
-     * @param string $method
-     * @param string $uri
-     * @param array  $data
-     *
-     * @return \Symfony\Component\DomCrawler\Crawler
-     */
-    protected function jsonRequest(Client $client, $method, $uri, array $data = array())
-    {
-        return $client->request(
-            $method,
-            $uri,
+        return static::createClient(
             array(),
-            array(),
-            array('CONTENT_TYPE' => 'application/json'),
-            json_encode($data)
+            array('HTTP_Authorization' => sprintf('%s %s', $this->authorizationHeaderPrefix, $data['token']))
         );
     }
 
@@ -79,52 +62,18 @@ abstract class WebTestCase extends LiipWebTestCase
      * @param Response $response
      * @param int      $statusCode
      * @param bool     $checkValidJson
-     * @param string   $contentType
      */
-    protected function assertJsonResponse(Response $response, $statusCode = 200, $checkValidJson =  true, $contentType = 'application/json')
+    protected function assertJsonResponse(Response $response, $statusCode = 200, $checkValidJson = true)
     {
-        $this->assertEquals(
-            $statusCode, $response->getStatusCode(),
-            $response->getContent()
-        );
-        $this->assertTrue(
-            $response->headers->contains('Content-Type', $contentType),
-            $response->headers
-        );
+        $this->assertEquals($statusCode, $response->getStatusCode(), $response->getContent());
+        $this->assertTrue($response->headers->contains('Content-Type', 'application/json'), $response->headers);
 
         if ($checkValidJson) {
             $decode = json_decode($response->getContent(), true);
-            $this->assertTrue(($decode !== null && $decode !== false),
+            $this->assertTrue(
+                ($decode !== null && $decode !== false),
                 'is response valid json: [' . $response->getContent() . ']'
             );
         }
-    }
-
-    /**
-     * @param Response $response
-     * @param int      $statusCode
-     */
-    protected function assertJsonHalResponse(Response $response, $statusCode = 200)
-    {
-        $this->assertJsonResponse($response, $statusCode);
-
-        $content = json_decode($response->getContent(), true);
-        $this->assertArrayHasKey('_links', $content);
-        $this->assertArrayHasKey('_embedded', $content);
-    }
-
-    /**
-     * @param Response $response
-     * @param int      $statusCode
-     */
-    protected function assertJsonHalPaginationResponse(Response $response, $statusCode = 200)
-    {
-        $this->assertJsonResponse($response, $statusCode);
-        $this->assertJsonHalResponse($response, $statusCode);
-
-        $content = json_decode($response->getContent(), true);
-        $this->assertArrayHasKey('page', $content);
-        $this->assertArrayHasKey('limit', $content);
-        $this->assertArrayHasKey('pages', $content);
     }
 }

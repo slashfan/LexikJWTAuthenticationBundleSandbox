@@ -24,7 +24,7 @@
     },
     "require-dev": {
         "liip/functional-test-bundle": "1.0.*",
-        "phpunit/phpunit": "4.1.*"
+        "phpunit/phpunit": "4.4.*"
     },
     "scripts": {
         "post-install-cmd": [
