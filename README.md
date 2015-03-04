@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/slashfan/LexikJWTAuthenticationBundleSandbox.svg)](https://travis-ci.org/slashfan/LexikJWTAuthenticationBundleSandbox)
 
-A minimalist sandbox to quickly test JWT authentication through LexikJWTAuthenticationBundle and Symfony2.3.
-** Demonstration purpose only. Do not use directly in production. **
+A minimalist sandbox to quickly test JWT authentication through LexikJWTAuthenticationBundle and Symfony2.3. 
+**Demonstration purpose only. Do not use this application directly in production.**
 
 ## Installation
 
