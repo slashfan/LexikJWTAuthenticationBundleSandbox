@@ -8,7 +8,10 @@
     <div class="container" ng-controller="MainCtrl">
         <div class="row" ng-if="pages">
             <div class="col-md-12">
-                <h3 class="page-header">Fetched from API</h3>
+                <h3 class="page-header">
+                    Fetched from API
+                    <small class="pull-right">logged in as <strong>{{ me.username }}</strong></small>
+                </h3>
                 <ul >
                     <li ng-repeat="page in pages">
                         {{ page.title }}
@@ -25,6 +28,11 @@
             <form class="form-horizontal" role="form" ng-submit="submit(credentials)">
                 <div class="alert alert-danger" ng-if="errorMessage">
                     {{ errorMessage }}
+                </div>
+                <div>
+                    <strong>In memory users :</strong> user / password or admin / password <br />
+                    <strong>FOSUser users :</strong> fosuser / password or fosuser@test.tld / password
+                    <hr />
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Username</label>

@@ -82,6 +82,8 @@ class PageControllerTest extends WebTestCase
         return array(
             array('user'),
             array('admin'),
+            array('fosuser'),
+            array('fosuser@test.tld'),
         );
     }
 }

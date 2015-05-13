@@ -1,0 +1,8 @@
+FOS\UserBundle\Model\User:
+    exclusion_policy: all
+    access_order:     alphabetical
+    properties:
+        username:
+            expose: true
+        email:
+            expose: true

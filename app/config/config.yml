@@ -66,10 +66,13 @@ sensio_framework_extra:
     router:  { annotations: true }
     request: { converters: true }
 
-# JMS Serializer
 jms_serializer:
     metadata:
         auto_detection: true
+        directories:
+            FOSUserBundle:
+                namespace_prefix: "FOS\\UserBundle"
+                path:             "@AcmeApiBundle/Resources/config/serializer/fos"
 
 # FOS Rest
 fos_rest:
@@ -90,3 +93,8 @@ fos_rest:
     body_listener: true
     access_denied_listener:
         json: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: login
+    user_class: Acme\Bundle\ApiBundle\Entity\User

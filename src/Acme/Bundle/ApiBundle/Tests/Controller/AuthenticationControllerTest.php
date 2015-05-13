@@ -41,14 +41,11 @@ class AuthenticationControllerTest extends WebTestCase
 
     /**
      * test login
+     *
+     * @dataProvider userProvider
      */
-    public function testLoginSuccess()
+    public function testLoginSuccess($data)
     {
-        $data = array(
-            'username' => 'user',
-            'password' => 'password',
-        );
-
         $this->client->request('POST', $this->getUrl('login_check'), $data);
         $this->assertJsonResponse($this->client->getResponse(), 200);
 
@@ -93,5 +90,42 @@ class AuthenticationControllerTest extends WebTestCase
         $client->request('HEAD', $this->getUrl('acme_api_ping'));
 
         $this->assertJsonResponse($client->getResponse(), 401, false);
+    }
+
+    /**
+     * @return array
+     */
+    public function userProvider()
+    {
+        return array(
+            // in memory user
+            array(
+                array(
+                    'username' => 'user',
+                    'password' => 'password',
+                )
+            ),
+            // in memory admin
+            array(
+                array(
+                    'username' => 'admin',
+                    'password' => 'password',
+                )
+            ),
+            // fosuser user by username
+            array(
+                array(
+                    'username' => 'fosuser',
+                    'password' => 'password',
+                )
+            ),
+            // fosuser user by email
+            array(
+                array(
+                    'username' => 'fosuser@test.tld',
+                    'password' => 'password',
+                )
+            )
+        );
     }
 }

@@ -14,3 +14,7 @@ acme_api_ping:
 acme_api_page:
     type:           rest
     resource:       Acme\Bundle\ApiBundle\Controller\Rest\PageController
+
+acme_api_me:
+    type:           rest
+    resource:       Acme\Bundle\ApiBundle\Controller\Rest\MeController

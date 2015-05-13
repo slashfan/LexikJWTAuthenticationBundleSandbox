@@ -68,6 +68,10 @@
                 .get('/api/pages')
                 .then(function (response) {
                     $scope.pages = response.data;
+                    return $http.get('/api/me');
+                })
+                .then(function (response) {
+                    $scope.me = response.data;
                 })
             ;
         })
