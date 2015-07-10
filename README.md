@@ -11,11 +11,15 @@ A minimalist sandbox to quickly test JWT authentication through [LexikJWTAuthent
 
     composer install -o
 
-## Running Tests
+## Running test suite
 
     bin/phpunit -c app
 
-## AngularJS App Demo
+## Manually check token generation using the CLI
+
+    curl -X POST http://localhost:8000/api/login_check -d username=user -d password=password
+
+## Run the AngularJS demo app
 
 A sample demo application is available in the web/angular-demo directory. It is based on the great post [Authentication with Ionic and Angular.js in a Cordova/Phonegap mobile web application](http://www.kdmooreconsulting.com/blogs/authentication-with-ionic-and-angular-js-in-a-cordovaphonegap-mobile-web-application/).
 
