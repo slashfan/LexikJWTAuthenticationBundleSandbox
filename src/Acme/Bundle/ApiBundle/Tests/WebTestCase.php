@@ -30,6 +30,18 @@ abstract class WebTestCase extends LiipWebTestCase
     protected $queryParameterName = 'bearer';
 
     /**
+     * {@inheritdoc}
+     */
+    public function setUp()
+    {
+        $this->loadFixtures(
+            array(
+                'Acme\Bundle\ApiBundle\DataFixtures\ORM\LoadUserData',
+            )
+        );
+    }
+
+    /**
      * Create a client with a default Authorization header.
      *
      * @param string $username

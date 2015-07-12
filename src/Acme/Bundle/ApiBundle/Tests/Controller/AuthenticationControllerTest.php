@@ -22,6 +22,8 @@ class AuthenticationControllerTest extends WebTestCase
      */
     public function setUp()
     {
+        parent::setUp();
+
         $this->client = static::createClient();
     }
 
