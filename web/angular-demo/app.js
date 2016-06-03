@@ -30,10 +30,10 @@
             };
         })
 
-        .controller('AppCtrl', function ($scope, $modal) {
+        .controller('AppCtrl', function ($scope, $uibModal) {
 
             $scope.$on('event:auth-loginRequired', function () {
-                $modal.open({
+                $uibModal.open({
                     templateUrl: 'login.html',
                     controller:  'ModalInstanceCtrl',
                     backdrop:    'static'
@@ -42,7 +42,7 @@
 
         })
 
-        .controller('ModalInstanceCtrl', function ($scope, $modalInstance, AuthenticationService) {
+        .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, AuthenticationService) {
 
             $scope.credentials = {
                 username: 'user',
@@ -54,7 +54,7 @@
             });
 
             $scope.$on('event:auth-login-complete', function () {
-                $modalInstance.close();
+                $uibModalInstance.close();
             });
 
             $scope.submit = function (credentials) {
